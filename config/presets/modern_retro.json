@@ -1,0 +1,34 @@
+{
+  "name": "Modern Retro",
+  "description": "High quality synthesis with subtle vintage flavor",
+  "audio": {
+    "sample_rate": 22050,
+    "bit_depth": 16,
+    "channels": 1
+  },
+  "synthesis": {
+    "formant_count": 5,
+    "formant_precision": "ultra",
+    "diphone_smoothing": true,
+    "prosody_enhancement": true
+  },
+  "vintage_processing": {
+    "enabled": true,
+    "intensity": 0.3,
+    "preset": "subtle_vintage",
+    "quantization_noise": false,
+    "analog_simulation": true,
+    "frequency_response_shaping": false
+  },
+  "prosody": {
+    "speaking_rate": 170,
+    "pitch_variation": 0.2,
+    "stress_emphasis": 0.3
+  },
+  "advanced": {
+    "spectral_enhancement": true,
+    "harmonic_enrichment": true,
+    "noise_reduction": true,
+    "temporal_smoothing": true
+  }
+}

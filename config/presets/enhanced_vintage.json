@@ -1,0 +1,34 @@
+{
+  "name": "Enhanced Vintage",
+  "description": "Improved quality while maintaining vintage character",
+  "audio": {
+    "sample_rate": 22050,
+    "bit_depth": 12,
+    "channels": 1
+  },
+  "synthesis": {
+    "formant_count": 4,
+    "formant_precision": "high",
+    "diphone_smoothing": true,
+    "prosody_enhancement": true
+  },
+  "vintage_processing": {
+    "enabled": true,
+    "intensity": 0.7,
+    "preset": "dr_sbaitso_enhanced",
+    "quantization_noise": true,
+    "analog_simulation": true,
+    "frequency_response_shaping": true
+  },
+  "prosody": {
+    "speaking_rate": 160,
+    "pitch_variation": 0.15,
+    "stress_emphasis": 0.25
+  },
+  "advanced": {
+    "spectral_enhancement": true,
+    "harmonic_enrichment": true,
+    "noise_reduction": false,
+    "temporal_smoothing": true
+  }
+}

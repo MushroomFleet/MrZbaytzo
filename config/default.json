@@ -1,0 +1,47 @@
+{
+  "version": "2.0",
+  "audio": {
+    "sample_rate": 22050,
+    "bit_depth": 8,
+    "channels": 1,
+    "buffer_size": 1024
+  },
+  "synthesis": {
+    "formant_count": 3,
+    "formant_precision": "standard",
+    "diphone_smoothing": false,
+    "prosody_enhancement": false,
+    "voice_characteristics": {
+      "gender": "male",
+      "age": "adult",
+      "vocal_tract_length": 1.0,
+      "breathiness": 0.0,
+      "roughness": 0.1
+    }
+  },
+  "vintage_processing": {
+    "enabled": true,
+    "intensity": 1.0,
+    "preset": "dr_sbaitso",
+    "quantization_noise": true,
+    "analog_simulation": true,
+    "frequency_response_shaping": true
+  },
+  "quality": {
+    "preset": "authentic_1986",
+    "adaptive_quality": false,
+    "performance_mode": "compatibility"
+  },
+  "prosody": {
+    "speaking_rate": 150,
+    "pitch_variation": 0.1,
+    "stress_emphasis": 0.2,
+    "pause_insertion": "minimal"
+  },
+  "advanced": {
+    "spectral_enhancement": false,
+    "harmonic_enrichment": false,
+    "noise_reduction": false,
+    "temporal_smoothing": false
+  }
+}

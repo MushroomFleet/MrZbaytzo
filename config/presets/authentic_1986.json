@@ -1,0 +1,34 @@
+{
+  "name": "Authentic 1986",
+  "description": "Original Dr. Sbaitso sound with all vintage characteristics",
+  "audio": {
+    "sample_rate": 22050,
+    "bit_depth": 8,
+    "channels": 1
+  },
+  "synthesis": {
+    "formant_count": 3,
+    "formant_precision": "standard",
+    "diphone_smoothing": false,
+    "prosody_enhancement": false
+  },
+  "vintage_processing": {
+    "enabled": true,
+    "intensity": 1.0,
+    "preset": "dr_sbaitso",
+    "quantization_noise": true,
+    "analog_simulation": true,
+    "frequency_response_shaping": true
+  },
+  "prosody": {
+    "speaking_rate": 150,
+    "pitch_variation": 0.05,
+    "stress_emphasis": 0.1
+  },
+  "advanced": {
+    "spectral_enhancement": false,
+    "harmonic_enrichment": false,
+    "noise_reduction": false,
+    "temporal_smoothing": false
+  }
+}
