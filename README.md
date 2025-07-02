@@ -13,7 +13,7 @@
 
 ```bash
 # Clone and install
-git clone https://github.com/your-username/py-zpaytzo.git
+git clone https://github.com/MushroomFleet/MrZbaytzo
 cd py-zpaytzo
 pip install -r requirements.txt
 
