@@ -13,7 +13,7 @@ from src.text_processor import TextProcessor
 from src.phoneme_converter import PhonemeConverter
 from src.diphone_synthesizer import DiphoneSynthesizer
 from src.enhanced_vintage_dsp import EnhancedVintageDSP
-from src.audio_output import AudioOutput
+from src.enhanced_audio_output import EnhancedAudioOutput
 
 
 class ZPaytzoEngineRev2:
@@ -70,11 +70,13 @@ class ZPaytzoEngineRev2:
             full_config = self.config_manager.get_config()
             self.vintage_dsp = EnhancedVintageDSP(full_config)
             
-            # Audio output
-            self.audio_output = AudioOutput(
+            # Enhanced audio output with padding configuration
+            padding_config = self.config_manager.get_padding_config()
+            self.audio_output = EnhancedAudioOutput(
                 sample_rate=self.sample_rate,
                 channels=self.channels,
-                buffer_size=self.audio_config.get('buffer_size', 1024)
+                buffer_size=self.audio_config.get('buffer_size', 1024),
+                padding_config=padding_config
             )
             
             print("✓ TTS pipeline initialized successfully")
@@ -193,11 +195,13 @@ class ZPaytzoEngineRev2:
             full_config = self.config_manager.get_config()
             self.vintage_dsp.update_config(full_config)
             
-            # Reinitialize audio output if sample rate changed
-            self.audio_output = AudioOutput(
+            # Reinitialize enhanced audio output if sample rate changed
+            padding_config = self.config_manager.get_padding_config()
+            self.audio_output = EnhancedAudioOutput(
                 sample_rate=self.sample_rate,
                 channels=self.channels,
-                buffer_size=self.audio_config.get('buffer_size', 1024)
+                buffer_size=self.audio_config.get('buffer_size', 1024),
+                padding_config=padding_config
             )
             
             print(f"✓ Switched to preset: {preset_name}")
@@ -231,11 +235,13 @@ class ZPaytzoEngineRev2:
             if section == 'audio':
                 self.audio_config = self.config_manager.get_audio_config()
                 if key in ['sample_rate', 'channels', 'buffer_size']:
-                    # Reinitialize audio output
-                    self.audio_output = AudioOutput(
+                    # Reinitialize enhanced audio output
+                    padding_config = self.config_manager.get_padding_config()
+                    self.audio_output = EnhancedAudioOutput(
                         sample_rate=self.audio_config.get('sample_rate', 22050),
                         channels=self.audio_config.get('channels', 1),
-                        buffer_size=self.audio_config.get('buffer_size', 1024)
+                        buffer_size=self.audio_config.get('buffer_size', 1024),
+                        padding_config=padding_config
                     )
             
             elif section in ['vintage_processing', 'advanced']:
@@ -257,6 +263,10 @@ class ZPaytzoEngineRev2:
             print(f"✓ Configuration saved to {filename}")
         else:
             print(f"✗ Failed to save configuration to {filename}")
+    
+    def get_current_preset(self) -> str:
+        """Get the name of the currently loaded preset."""
+        return self.config_manager.get_current_preset()
     
     def get_quality_info(self) -> dict:
         """Get information about current quality settings."""

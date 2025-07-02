@@ -1,0 +1,7 @@
+:presets
+:preset modern_retro
+Hello from interactive mode with modern retro quality
+:preset authentic_1986
+Now testing with authentic 1986 quality
+:config
+:quit

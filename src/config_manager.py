@@ -172,6 +172,16 @@ class ConfigManager:
         """Get audio configuration parameters."""
         return self.get_config('audio')
     
+    def get_padding_config(self) -> Dict[str, Any]:
+        """Get audio padding configuration parameters."""
+        audio_config = self.get_config('audio')
+        return audio_config.get('padding', {
+            'start_silence_ms': 150,
+            'end_silence_ms': 250,
+            'fade_in_ms': 25,
+            'fade_out_ms': 50
+        })
+    
     def get_synthesis_config(self) -> Dict[str, Any]:
         """Get synthesis configuration parameters."""
         return self.get_config('synthesis')

@@ -1,10 +1,16 @@
 {
-  "version": "2.0",
+  "name": "Default Configuration",
+  "description": "Default settings for MR.ZPAYTZO-rev2",
   "audio": {
     "sample_rate": 22050,
     "bit_depth": 8,
     "channels": 1,
-    "buffer_size": 1024
+    "padding": {
+      "start_silence_ms": 150,
+      "end_silence_ms": 250,
+      "fade_in_ms": 25,
+      "fade_out_ms": 50
+    }
   },
   "synthesis": {
     "formant_count": 3,

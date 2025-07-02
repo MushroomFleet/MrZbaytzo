@@ -4,7 +4,13 @@
   "audio": {
     "sample_rate": 22050,
     "bit_depth": 8,
-    "channels": 1
+    "channels": 1,
+    "padding": {
+      "start_silence_ms": 100,
+      "end_silence_ms": 200,
+      "fade_in_ms": 10,
+      "fade_out_ms": 25
+    }
   },
   "synthesis": {
     "formant_count": 3,

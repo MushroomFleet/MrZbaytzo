@@ -17,6 +17,7 @@ MR.ZPAYTZO-rev2 is an enhanced version of the original 1986-era text-to-speech s
 - Configurable vintage intensity (0.0-1.0)
 - Advanced audio processing options
 - Interactive mode with preset switching
+- Enhanced audio output with padding and fade-in/out
 - Backward compatibility with rev0
 
 ### Technical Improvements
@@ -45,16 +46,90 @@ python main_rev2.py --preset modern_retro "High quality speech"
 
 ### Interactive Mode
 
+Interactive mode provides a powerful real-time interface for experimenting with different quality presets and configurations. You can switch between presets instantly and hear the differences in audio quality.
+
 ```bash
-# Start interactive mode with Enhanced Vintage preset
+# Start interactive mode with default preset (Authentic 1986)
+python main_rev2.py --interactive
+
+# Start with a specific preset
 python main_rev2.py --interactive --preset enhanced_vintage
+
+# Start with custom configuration
+python main_rev2.py --interactive --config my_config.json
 ```
 
-Interactive commands:
-- `:preset <name>` - Switch quality preset
-- `:config` - Show current configuration
-- `:presets` - List available presets
-- `:quit` - Exit
+#### Interactive Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `:presets` | List all available quality presets with current indicator | `:presets` |
+| `:preset <name>` | Switch to a different quality preset in real-time | `:preset modern_retro` |
+| `:config` | Display current configuration details | `:config` |
+| `:quit` | Exit interactive mode | `:quit` |
+| `Ctrl+C` | Alternative way to exit | |
+
+#### Interactive Session Example
+
+```
+> :presets
+Available Quality Presets:
+  Authentic 1986 (current)
+    Original Dr. Sbaitso sound with all vintage characteristics
+
+  Enhanced Vintage
+    Improved quality while maintaining vintage character
+
+  Modern Retro
+    High quality synthesis with subtle vintage flavor
+
+> :preset modern_retro
+✓ Switched to preset: modern_retro
+Quality Level: Modern Retro
+Audio: 22050Hz, 16-bit, 1 channel(s)
+Vintage Processing: 0.3 intensity, subtle_vintage preset
+Advanced Features: Spectral Enhancement, Harmonic Enrichment, Noise Reduction
+
+> Hello world with high quality audio
+[Synthesizes speech with Modern Retro quality]
+
+> :preset authentic_1986
+✓ Switched to preset: authentic_1986
+Quality Level: Authentic 1986
+Audio: 22050Hz, 8-bit, 1 channel(s)
+Vintage Processing: 1.0 intensity, dr_sbaitso preset
+
+> Hello world with vintage sound
+[Synthesizes speech with authentic 1986 quality]
+
+> :config
+=== Current Configuration ===
+Quality Level: Authentic 1986
+Current Preset: authentic_1986
+Audio: 22050Hz, 8-bit, 1 channel(s)
+Synthesis: 3 formants, standard precision
+Vintage Processing: Enabled, 1.0 intensity
+
+> :quit
+```
+
+#### Real-Time Preset Switching Features
+
+- **Instant Quality Changes**: Switch between 8-bit, 12-bit, and 16-bit audio quality
+- **Live Configuration Updates**: Audio padding, vintage intensity, and advanced features update automatically
+- **No Restart Required**: All changes take effect immediately without restarting the engine
+- **Audio Padding Adjustment**: Each preset has optimized silence padding and fade settings:
+  - Authentic 1986: 300ms total padding (100ms start + 200ms end)
+  - Enhanced Vintage: 400ms total padding (150ms start + 250ms end)
+  - Modern Retro: 500ms total padding (200ms start + 300ms end)
+
+#### Interactive Mode Benefits
+
+1. **A/B Testing**: Quickly compare different quality levels with the same text
+2. **Configuration Exploration**: Experiment with settings without command-line complexity
+3. **Live Demonstration**: Perfect for showcasing the engine's capabilities
+4. **Educational Use**: Understand the impact of different vintage processing levels
+5. **Development Testing**: Rapid iteration during preset development
 
 ### List Available Presets
 
@@ -205,6 +280,35 @@ The test suite covers:
 - Runtime configuration changes
 - Advanced processing features
 - Backward compatibility with rev0
+
+### Audio Padding Test
+
+Test the enhanced audio output with padding to verify clipping prevention:
+
+```bash
+python test_audio_padding.py
+```
+
+This test verifies:
+- Configurable silence padding at start and end of speech
+- Fade-in/fade-out to prevent audio clicks and pops
+- Quality-specific padding settings for each preset
+- Audio clipping prevention and level analysis
+
+### Interactive Mode Test
+
+Test the interactive mode functionality and preset switching:
+
+```bash
+python test_interactive.py
+```
+
+This test verifies:
+- Real-time preset switching between all quality levels
+- Interactive command functionality (`:presets`, `:preset`, `:config`, `:quit`)
+- Audio padding configuration updates when switching presets
+- Speech synthesis with different presets in interactive mode
+- Configuration display and preset listing features
 
 ## 🔄 Migration from Rev0
 
